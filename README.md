@@ -43,3 +43,7 @@ Kiota reports that several streaming endpoints use GET request bodies, which Ope
 NuGet publishing is deliberately disabled until package ownership, version policy, and signing are configured.
 
 This project is not affiliated with or endorsed by Wandelbots GmbH.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Every issue or independent change must use a separate branch and pull request. Pull requests must remain unmerged until `ardo314` explicitly approves them.
