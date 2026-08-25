@@ -13,6 +13,9 @@ These instructions apply to every contributor and automated coding agent working
 - Ensure generation, build, and tests pass before requesting review.
 - Do not merge the pull request until the repository owner, `ardo314`, has explicitly approved the merge.
 - After opening or updating a pull request, stop and wait for that approval. Silence, passing CI, or an approval from automation is not permission to merge.
+- Use squash merge after approval so each pull request becomes one focused commit on `main`.
+- Do not use merge commits or rebase merges for pull requests.
+- Delete the completed topic branch after a successful squash merge.
 
 ## Generated code
 
