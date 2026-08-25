@@ -8,7 +8,7 @@ using System;
 namespace Wandelbots.Nova.Api.Models
 {
     /// <summary>
-    /// Defines a pose in 3D space.A pose is a combination of a position and an orientation.The position is applied before the orientation.
+    /// Constant coordinate transformation between the motion group base frame and the start of the kinematic chain modeled by Denavit-Hartenberg parameters.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Pose : IAdditionalDataHolder, IParsable

@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Wandelbots.Nova.Api.Models
 {
-    /// <summary>
-    /// The merged joint trajectory. If a blending was requested on a segment but could not be applied,the trajectory is merged without blending. The feedback will contain further informationon why blending could not be applied.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class JointTrajectory : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }

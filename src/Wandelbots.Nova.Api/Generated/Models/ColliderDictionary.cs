@@ -8,7 +8,7 @@ using System;
 namespace Wandelbots.Nova.Api.Models
 {
     /// <summary>
-    /// A collection of identifiable colliders.
+    /// SafetyZones are areas which cannot be entered or where certain limits apply.SafetyZones are defined in the world coordinate system.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ColliderDictionary : IAdditionalDataHolder, IParsable
