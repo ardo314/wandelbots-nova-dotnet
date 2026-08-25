@@ -1,0 +1,45 @@
+name: Update upstream specifications
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 5 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+      - name: Download specifications
+        shell: pwsh
+        run: ./scripts/Update-Specifications.ps1
+      - name: Generate REST client
+        shell: pwsh
+        run: ./scripts/Generate-Client.ps1
+      - run: dotnet restore
+      - run: dotnet build --no-restore --configuration Release
+      - run: dotnet test --no-build --configuration Release
+      - name: Open update pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No upstream changes."
+            exit 0
+          fi
+          branch="automation/update-nova-api"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add specs src/Wandelbots.Nova.Api/Generated
+          git commit -m "chore: update NOVA API specifications"
+          git push --force-with-lease origin "$branch"
+          gh pr create --base main --head "$branch" --title "chore: update NOVA API specifications" --body "Automated update from the public Wandelbots NOVA OpenAPI and AsyncAPI specifications." || true

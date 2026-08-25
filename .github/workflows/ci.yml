@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+      - run: dotnet restore
+      - run: dotnet build --no-restore --configuration Release
+      - run: dotnet test --no-build --configuration Release
+      - name: Verify generated client is current
+        shell: pwsh
+        run: |
+          ./scripts/Generate-Client.ps1
+          if (-not (git diff --quiet)) {
+            git diff --stat
+            throw 'Generated client is not current with the committed specification.'
+          }
