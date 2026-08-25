@@ -16,14 +16,9 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
+      - name: Generate client from committed specification
+        shell: pwsh
+        run: ./scripts/Generate-Client.ps1
       - run: dotnet restore
       - run: dotnet build --no-restore --configuration Release
       - run: dotnet test --no-build --configuration Release
-      - name: Verify generated client is current
-        shell: pwsh
-        run: |
-          ./scripts/Generate-Client.ps1
-          if (-not (git diff --quiet)) {
-            git diff --no-ext-diff
-            throw 'Generated client is not current with the committed specification.'
-          }

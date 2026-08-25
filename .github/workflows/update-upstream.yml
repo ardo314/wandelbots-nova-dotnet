@@ -18,15 +18,24 @@ jobs:
         with:
           dotnet-version: 9.0.x
       - name: Download specifications
+        id: specifications
         shell: pwsh
-        run: ./scripts/Update-Specifications.ps1
+        run: |
+          ./scripts/Update-Specifications.ps1
+          $changed = -not (git diff --quiet -- specs)
+          "changed=$($changed.ToString().ToLowerInvariant())" >> $env:GITHUB_OUTPUT
       - name: Generate REST client
+        if: steps.specifications.outputs.changed == 'true'
         shell: pwsh
         run: ./scripts/Generate-Client.ps1
-      - run: dotnet restore
-      - run: dotnet build --no-restore --configuration Release
-      - run: dotnet test --no-build --configuration Release
+      - if: steps.specifications.outputs.changed == 'true'
+        run: dotnet restore
+      - if: steps.specifications.outputs.changed == 'true'
+        run: dotnet build --no-restore --configuration Release
+      - if: steps.specifications.outputs.changed == 'true'
+        run: dotnet test --no-build --configuration Release
       - name: Open update pull request
+        if: steps.specifications.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
