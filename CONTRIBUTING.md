@@ -8,5 +8,6 @@ All work must go through a reviewed pull request.
 4. Link the relevant issue and describe the change, tests, and any generated-code warnings.
 5. Wait for CI to pass.
 6. Wait for explicit approval from `ardo314` before merging.
+7. Squash merge the approved pull request and delete its completed branch.
 
-Passing CI does not authorize a merge. Contributors and automated agents must leave the pull request open until `ardo314` explicitly approves it.
+Passing CI does not authorize a merge. Contributors and automated agents must leave the pull request open until `ardo314` explicitly approves it. Pull requests must use squash merge; merge commits and rebase merges are not permitted.
