@@ -36,11 +36,20 @@ Never commit NOVA access tokens. Load them from environment variables or a secre
 
 The REST document's API version is distinct from NOVA product release versions, so updates are detected by content rather than inferred version numbers.
 
+## Package versioning
+
+Package versions preserve the exact NOVA product release in their first three
+components. An optional fourth component identifies client-only fixes. For example,
+`26.6.2.1` is the first client revision for NOVA 26.6.2. The OpenAPI version is
+recorded separately in package metadata. See [the versioning policy](docs/versioning.md)
+for release rules and more examples.
+
 ## Known limitations
 
 Kiota reports that several streaming endpoints use GET request bodies, which OpenAPI generation ignores. Those endpoints and the NATS/JetStream surface require dedicated transports. Kiota also reports one polymorphic upstream schema without a discriminator. CI catches resulting compilation failures.
 
-NuGet publishing is deliberately disabled until package ownership, version policy, and signing are configured.
+GitHub Packages is the initial package registry. NuGet.org publishing remains
+disabled until package ownership and signing are configured.
 
 This project is not affiliated with or endorsed by Wandelbots GmbH.
 

@@ -16,6 +16,11 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
+      - name: Validate package version policy
+        shell: pwsh
+        run: |
+          [xml] $compatibility = Get-Content -Raw eng/Compatibility.props
+          ./scripts/Test-PackageVersion.ps1 -Tag "v$($compatibility.Project.PropertyGroup.NovaProductVersion)"
       - name: Generate client from committed specification
         shell: pwsh
         run: ./scripts/Generate-Client.ps1

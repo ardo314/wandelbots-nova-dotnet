@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <!-- The NOVA product release against which the archived specifications were obtained. -->
+    <NovaProductVersion>26.6.0</NovaProductVersion>
+    <OpenApiVersion>2.6.0</OpenApiVersion>
+  </PropertyGroup>
+</Project>

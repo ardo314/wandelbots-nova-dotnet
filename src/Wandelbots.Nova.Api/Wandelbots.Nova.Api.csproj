@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\..\eng\Compatibility.props" />
+
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -12,6 +14,7 @@
     <Authors>ardo314 contributors</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageReleaseNotes>Supports NOVA $(NovaProductVersion); generated from OpenAPI $(OpenApiVersion). See docs/versioning.md in the repository for the versioning policy.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +23,11 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="NovaProductVersion" Value="$(NovaProductVersion)" />
+    <AssemblyMetadata Include="OpenApiVersion" Value="$(OpenApiVersion)" />
   </ItemGroup>
 
 </Project>
