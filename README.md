@@ -29,6 +29,17 @@ var cells = await nova.Cells.GetAsync();
 
 Never commit NOVA access tokens. Load them from environment variables or a secret store.
 
+For a local NOVA instance that explicitly permits unauthenticated requests, create
+an anonymous client instead:
+
+```csharp
+var localNova = NovaApiClientFactory.CreateAnonymous("http://localhost");
+```
+
+Use anonymous clients only for trusted local environments. The published NOVA API
+declares bearer authentication, and production instances should use `Create` with
+an access token.
+
 ## Specifications
 
 - [REST OpenAPI](https://portal.wandelbots.io/docs/api/v2/ui/public.openapi.yaml)
