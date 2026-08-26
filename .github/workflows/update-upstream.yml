@@ -47,6 +47,7 @@ jobs:
           branch="automation/update-nova-api"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$branch:refs/remotes/origin/$branch" || true
           git checkout -B "$branch"
           git add specs src/Wandelbots.Nova.Api/Generated
           git commit -m "chore: update NOVA API specifications"
