@@ -8,7 +8,7 @@ using System;
 namespace Wandelbots.Nova.Api.Models
 {
     /// <summary>
-    /// The data to assemble the robot setup can be retrieved from [getMotionGroupDescription](#/operations/getMotionGroupDescription) endpoint.
+    /// The motion group setup required for collision checking and timescaling.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MotionGroupSetup : IAdditionalDataHolder, IParsable
