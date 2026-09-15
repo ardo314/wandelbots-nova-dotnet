@@ -8,7 +8,7 @@ using System;
 namespace Wandelbots.Nova.Api.Models
 {
     /// <summary>
-    /// Limits override defines additional limits for the blending at the end of this segment.These limits do not replace the global limits of the motion group. Instead, they aremerged with the global limits so that the most restrictive value applies for each limit.
+    /// Limits override defines additional limits for this segment of the motion.These limits do not replace the global limits of the motion group. Instead, they aremerged with the global limits so that the most restrictive value applies for each limit.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LimitsOverride : IAdditionalDataHolder, IParsable
